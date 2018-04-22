@@ -1,2 +1,4 @@
 # testDebug
 designMode中为几种常见设计模式的实现代码
+
+beautifulOfCode中为编程之美中遇到的问题
