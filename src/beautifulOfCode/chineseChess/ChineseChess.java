@@ -18,7 +18,26 @@ public class ChineseChess {
 		 * 		判断AB位置是否满足要求
 		 * 		满足则输出
 		 */
-		//书上的逻辑用C语言实现，有很多的宏定义，大意是用byte或者int型的变量，每一位保存一个信息
+		//书上的逻辑用C语言实现，分别用1~9表示将帅的位置，有很多的宏定义，大意是用byte或者int型的变量，分别取高四位第四位做循环
 		//感觉有点像思考2的方式
+		for(int i=1;i<=9;i++){
+			for(int j=1;j<=9;j++){
+				if(i%3 == j%3){
+					continue;
+				}
+				System.out.println("A space:"+ i + " B space:" + j);
+			}
+		}
+	}
+	
+	//这种方式没看懂...
+	public void test2(){
+		int i = 81;
+		while(i-- != 0){
+			if(i/9%3 == i%9%3){
+				continue;
+			}
+			System.out.println("A space:"+ (i/9 + 1) + " B space:" + (i%9 + 1));
+		}
 	}
 }
