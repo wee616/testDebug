@@ -30,7 +30,7 @@ public class ChineseChess {
 		}
 	}
 	
-	//这种方式没看懂...
+	//这种方式就是test1的进化版，即如何用i来表示j的问题，用81--%9  81--/9 来代替i和j 
 	public void test2(){
 		int i = 81;
 		while(i-- != 0){
