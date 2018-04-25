@@ -2,7 +2,7 @@ package beautifulOfCode.countOneFromBinaryNumber;
 
 /**
  * 对于一个字节8bit的无符号整型变量，求其二进制表示中1的个数
- * @author 11941 
+ * @author 11941  
  *
  */
 public class CountOneFromBinaryNumber {
