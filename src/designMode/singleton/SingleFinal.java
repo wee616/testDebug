@@ -7,9 +7,8 @@ public class SingleFinal {
 	}
 	
 	private SingleFinal(){}
-	
-	
-	
+
+	// 静态内部类只有在被调用时才初始化，且只会被初始化一次
 	private static class InstanceHolder{
 		
 		private static final SingleFinal instance = new SingleFinal();
