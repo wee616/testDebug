@@ -1,5 +1,6 @@
 package designMode.singleton;
 
+//测试用例
 public class SingleObject {
 	
 	public static void main(String[] args){
