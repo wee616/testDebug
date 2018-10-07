@@ -10,7 +10,7 @@ public class File implements IFile {
 	public void showFile() {
 		System.out.println("show file");
 
-	}
+	} 
 	
 	private void loadFile(){
 		System.out.println("load file");
