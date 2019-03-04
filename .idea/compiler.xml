@@ -10,7 +10,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="TestDebug" target="1.7" />
+      <module name="crm-access" target="1.8" />
+      <module name="TestDebug" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
