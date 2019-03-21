@@ -1,7 +1,7 @@
 package nio;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
@@ -53,15 +53,16 @@ public class Test {
         String info = "1111111111";
         File file = new File("d:/testFileOutputStream.txt");
         FileOutputStream output = null;
+        BufferedOutputStream bufferedOutputStream = null;
         Date begin = new Date();
         try {
             output = new FileOutputStream(file);
-            for(int i = 0;i< 100000;i++){
-                output.write(info.getBytes());
+            bufferedOutputStream = new BufferedOutputStream(output);
+            for(int i = 0;i< 500000;i++){
+                bufferedOutputStream.write(info.getBytes());
             }
             Date end = new Date();
             System.out.println((end.getTime() - begin.getTime()));
-            System.out.println(file.length());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -89,15 +90,14 @@ public class Test {
             Date begin = new Date();
             output = new FileOutputStream(file);
             fout = output.getChannel();
-            ByteBuffer buf = ByteBuffer.allocate(1000000);
-            for(int i = 0;i< 100000;i++){
+            ByteBuffer buf = ByteBuffer.allocate(5000000);
+            for(int i = 0;i< 500000;i++){
                 buf.put(info.getBytes());
             }
             buf.flip();
             fout.write(buf);
             Date end = new Date();
             System.out.println((end.getTime() - begin.getTime()));
-            System.out.println(file.length());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -118,28 +118,24 @@ public class Test {
         }
     }
 
+    /**
+     * 测试MappedByteBuffer
+     */
     private static void testMappedByteBuffer() {
         String info = "1111111111";
-        RandomAccessFile file = null;
-        try {
-            file = new RandomAccessFile("d:/testMappedByteBuffer.txt","rw");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        FileOutputStream output = null;
+        RandomAccessFile output = null;
         FileChannel fout = null;
         try {
             Date begin = new Date();
-            fout = file.getChannel();
-            MappedByteBuffer buf = fout.map(FileChannel.MapMode.READ_WRITE, 0, 1000000);
-            for(int i = 0;i< 100000;i++){
-                buf.put(info.getBytes());
+            output = new RandomAccessFile("d:/testChannel1.txt","rw");
+            fout = output.getChannel();
+            MappedByteBuffer buf1 =  fout.map(FileChannel.MapMode.READ_WRITE, 0, 5000000);
+            for(int i = 0;i< 500000;i++){
+                buf1.put(info.getBytes());
             }
-            buf.flip();
-            fout.write(buf);
+            buf1.flip();
             Date end = new Date();
             System.out.println((end.getTime() - begin.getTime()));
-            System.out.println(file.length());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
