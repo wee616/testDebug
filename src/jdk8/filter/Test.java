@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 测试过滤
+ * 根据属性名过滤List<bean>
  * @author wuyc
  * @version 0.0.1
  * @date 2019/5/7
